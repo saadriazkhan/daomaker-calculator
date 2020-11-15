@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+/* helper classes */
+
+@function sizeValue($key, $value) {
+    @return if($key == "0", 0, $value + rem);
+}
+
+$separator: "-";
+
+$lengths: (("quarter", 25%), ("half", 50%), ("three-quarter", 75%), ("full", 100%));
+
+@each $width in $lengths {
+    $widthKey: nth($width, 1);
+    $widthValue: nth($width, 2);
+
+    .width#{$separator}#{$widthKey} {
+        width: #{$widthValue};
+    }
+    .height#{$separator}#{$widthKey} {
+        height: #{$widthValue};
+    }
+}
+
+$borderRadiusKey: "br";
+$sizes: (
+    ("0", 0px),
+    ("1", 4px),
+    ("2", 8px),
+    ("3", 12px),
+    ("4", 16px),
+    ("5", 20px),
+    ("6", 24px),
+    ("7", 28px),
+    ("8", 32px),
+    ("9", 36px),
+    ("10", 40px)
+);
+
+@function borderRadiusValue($key, $value) {
+    @return if($key == "0", 0, $value);
+}
+
+/* creates each class */
+
+@each $size in $sizes {
+    $sizeKey: nth($size, 1);
+    $sizeValue: nth($size, 2);
+
+    .#{$borderRadiusKey}#{$separator}#{$sizeKey} {
+        border-radius: borderRadiusValue($sizeKey, $sizeValue) !important;
+    }
+}
+
+$opacities: (
+    ("0", 0),
+    ("1", 0.1),
+    ("2", 0.2),
+    ("3", 0.3),
+    ("4", 0.4),
+    ("5", 0.5),
+    ("6", 0.6),
+    ("7", 0.7),
+    ("8", 0.8),
+    ("9", 0.9),
+    ("10", 1)
+);
+
+@each $opacity in $opacities {
+    $opacityKey: nth($opacity, 1);
+    $opacityValue: nth($opacity, 2);
+
+    .opacity-#{$opacityKey} {
+        opacity: #{$opacityValue};
+    }
+}
+
+/* utility classes */
+
+.is-flex {
+    display: flex;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.justify-between {
+    justify-content: space-between;
+}

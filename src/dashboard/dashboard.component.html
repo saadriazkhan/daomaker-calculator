@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="column is-half has-background-info">
+            <div class="notification is-link mt-4 is-size-3 has-text-centered">
+                {{'header'|I18n}}
+            </div>
+            
+            <div class="button is-primary my-2" (click)="clearValues()">
+                {{'clearButton'|I18n}}
+            </div>
+            
+            <div class="columns">
+                <div class="column is-flex">
+                    <div>
+                        <input class="input" type="text" [(ngModel)]="value1">
+                    </div>
+                    <div class="ml-4">
+                        <input class="input" type="text" [(ngModel)]="value2">
+                    </div>
+                </div>
+            </div>
+
+            <daomaker-operators [value1]="value1"
+                [value2]="value2"
+                (result)="assignResult($event)">
+            </daomaker-operators>
+
+            <div class="notification has-background-light mt-2 mx-20 is-size-4">
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        {{result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

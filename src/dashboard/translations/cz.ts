@@ -1,0 +1,8 @@
+export const translation = {
+    "header": "???",
+    "add": "???",
+    "subtract": "???",
+    "multiply": "???",
+    "divide": "???",
+    "clearButton": "???"
+}
